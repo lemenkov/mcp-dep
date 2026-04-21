@@ -23,7 +23,7 @@ def _get(url: str) -> Optional[dict[str, Any]]:
         return None
 
 
-@mcp.tool()
+@mcp.tool(annotations={"readOnlyHint": True, "openWorldHint": True}, tags={"read"})
 def hex_package(name: str) -> dict[str, Any]:
     """Get package metadata from Hex.pm (Elixir/Erlang packages).
 
@@ -49,7 +49,7 @@ def hex_package(name: str) -> dict[str, Any]:
     }
 
 
-@mcp.tool()
+@mcp.tool(annotations={"readOnlyHint": True, "openWorldHint": True}, tags={"read"})
 def pypi_package(name: str) -> dict[str, Any]:
     """Get package metadata from PyPI (Python packages).
 
@@ -75,7 +75,7 @@ def pypi_package(name: str) -> dict[str, Any]:
     }
 
 
-@mcp.tool()
+@mcp.tool(annotations={"readOnlyHint": True, "openWorldHint": True}, tags={"read"})
 def rubygems_package(name: str) -> dict[str, Any]:
     """Get package metadata from RubyGems (Ruby packages).
 
@@ -98,7 +98,7 @@ def rubygems_package(name: str) -> dict[str, Any]:
     }
 
 
-@mcp.tool()
+@mcp.tool(annotations={"readOnlyHint": True, "openWorldHint": True}, tags={"read"})
 def npm_package(name: str) -> dict[str, Any]:
     """Get package metadata from NPM (JavaScript/Node.js packages).
 
@@ -128,7 +128,7 @@ def npm_package(name: str) -> dict[str, Any]:
     }
 
 
-@mcp.tool()
+@mcp.tool(annotations={"readOnlyHint": True, "openWorldHint": True}, tags={"read"})
 def crates_package(name: str) -> dict[str, Any]:
     """Get package metadata from crates.io (Rust packages).
 
