@@ -1,2 +1,7 @@
+<!--
+SPDX-FileCopyrightText: 2026 Peter Lemenkov <lemenkov@gmail.com>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # mcp-dep
 MCP service for package dependencies querying
