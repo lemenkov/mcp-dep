@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright (C) 2026 Peter Lemenkov <lemenkov@gmail.com>
 
-import os
 import json
-import urllib.request
+import os
 import urllib.error
-from typing import Any, Optional
+import urllib.request
+from typing import Any
+
 from fastmcp import FastMCP
 
 mcp = FastMCP("dep")
@@ -13,7 +14,7 @@ mcp = FastMCP("dep")
 HEADERS = {"User-Agent": "mcp-dep/0.1 (https://github.com/lemenkov/mcp-dep)"}
 
 
-def _get(url: str) -> Optional[dict[str, Any]]:
+def _get(url: str) -> dict[str, Any] | None:
     """Simple synchronous HTTP GET returning parsed JSON or None."""
     try:
         req = urllib.request.Request(url, headers=HEADERS)
@@ -123,7 +124,9 @@ def npm_package(name: str) -> dict[str, Any]:
         "license": latest_info.get("license"),
         "engines": latest_info.get("engines", {}),
         "homepage": data.get("homepage"),
-        "repository": data.get("repository", {}).get("url") if isinstance(data.get("repository"), dict) else data.get("repository"),
+        "repository": data.get("repository", {}).get("url")
+        if isinstance(data.get("repository"), dict)
+        else data.get("repository"),
         "url": f"https://www.npmjs.com/package/{name}",
     }
 
