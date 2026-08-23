@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2026 Peter Lemenkov <lemenkov@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+[Unit]
+Description=MCP Dependency Version Server
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=true
+
+EnvironmentFile=-/etc/sysconfig/mcp-dep
+WorkingDirectory=/opt/mcp-servers/dep
+ExecStart=/opt/mcp-servers/dep/venv/bin/python server.py
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mcp-dep
+
+[Install]
+WantedBy=multi-user.target
